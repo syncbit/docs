@@ -1,4 +1,10 @@
 module.exports = {
     title: 'Syncbit Docs',
-    description: ''
+    description: '',
+    themeConfig: {
+        nav: [
+            { text: "Home", link: "/" },
+            { text: "Signalling Server", link: "/signalling-server/" }
+        ]
+    }
 }
