@@ -7,23 +7,29 @@ A Node JS server used for coordinating WebRTC connections between peers.
 Events that clients can emit.
 
 ### room-create(room: string) <!-- room-create -->
-* Description: create a room, making the caller the room owner
-* Response events:
+* **Description:** create a room, making the caller the room owner
+* **Parameters:**
+    * `room`: the name of the room to create
+* **Response events:**
     * [room-exists](#room-exists): `room` already exists
     * [room-created](#room-created): `room` successfully created
     * [error](#error): server error occurred
 
 ### room-join(room: string) <!-- room-join -->
-* Description: join an already existing room
-* Response events:
+* **Description:** join an already existing room
+* **Parameters:**
+    * `room`: the name of the room to join
+* **Response events:**
     * [room-not-exists](#room-not-exists): `room` does not exist
     * [room-joined](#room-joined): `room` successfully joined
     * [client-joined](#client-join): emitted to all other clients when a client joins `room`
     * [error](#error): server error occurred
 
 ### room-leave(room: string) <!-- room-leave -->
-* Description: leave a room
-* Response events:
+* **Description:** leave a room
+* **Parameters:**
+    * `room`: the name of the room to leave
+* **Response events:**
     * [not-in-room](#not-in-room): client was not in `room`
     * [room-left](#room-left): `room` successfully left
     * [client-left](#client-left): emitted to all other clients when a client leaves `room`
@@ -40,25 +46,40 @@ If the room owner leaves, the entire room will be closed, disconnecting all othe
 Events sent back in response to events emitted by clients.
 
 ### room-exists(room: string) <!-- room-exists -->
-* Description: emitted when a room is attempted to be created but it already exists
+* **Description:** emitted when a room is attempted to be created but it already exists
+* **Parameters:**
+    * `room`: the room that already exists
 
 ### room-not-exists(room: string) <!-- room-not-exists -->
-* Description: emitted when a room is attempted to be join but it does not exist
+* **Description:** emitted when a room is attempted to be join but it does not exist
+* **Parameters:**
+    * `room`: the room that does not exist
 
 ### not-in-room(room: string) <!-- room-not-exists -->
-* Description: emitted when a room is attempted to be left but the client is not in the room currently
+* **Description:** emitted when a room is attempted to be left but the client is not in the room currently
+* **Parameters:**
+    * `room`: the room that the client is not in
 
 ### room-created(room: string) <!-- room-created -->
-* Description: emitted when a room is successfully created.
+* **Description:** emitted when a room is successfully created.
+* **Parameters:**
+    * `room`: the room that was created
 
 ### room-joined(room: string) <!-- room-joined -->
-* Description: emitted when a room is successfully joined.
+* **Description:** emitted when a room is successfully joined.
+* **Parameters:**
+    * `room`: the room that was joined
 
-### room-left(room: string) <!-- room-left -->
-* Description: emitted when a room is successfully left.
+### room-left(room: string, kicked: boolean) <!-- room-left -->
+* **Description:** emitted when a room is successfully left.
+* **Parameters:**
+    * `room`: the room that was left
+    * `kicked`: indicates if the client was kicked from the room or not
 
 ### error(message: any) <!-- error -->
-* Description: emitted when an unexpected socket error occurs on the server
+* **Description:** emitted when an unexpected socket error occurs on the server
+* **Parameters:**
+    * `message`: the error message
 
 
 
@@ -67,8 +88,14 @@ Events sent back in response to events emitted by clients.
 
 Events that all clients in a room can listen to.
 
-### client-joined(room: string) <!-- client-joined -->
-* Description: emitted when a client joins a room
+### client-joined(room: string, id: string) <!-- client-joined -->
+* **Description:** emitted when a client joins a room
+* **Parameters:**
+    * `room`: the room that the event occurred in
+    * `id`: the id of the client that joined the room
 
-### client-left(room: string) <!-- client-left -->
-* Description: emitted when a client leaves a room
+### client-left(room: string, id: string) <!-- client-left -->
+* **Description:** emitted when a client leaves a room
+* **Parameters:**
+    * `room`: the room that the event occurred in
+    * `id`: the id of the client that left the room
