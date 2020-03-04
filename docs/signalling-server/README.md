@@ -1,6 +1,24 @@
+---
+sidebarDepth: 3
+---
+
 # Signalling Server
 
 A Node JS server used for coordinating WebRTC connections between peers.
+
+## Object Types
+
+Custom objects used in the signalling server.
+
+### RTCDataContainer <!-- rtc-data-container -->
+``` ts
+interface RTCDataContainer {
+    description?: RTCSessionDescriptionInit;
+    candidate?: RTCIceCandidate;
+}
+```
+
+Note: here are the links to the [RTCSessionDescriptionInit](http://html5index.org/WebRTC%20-%20RTCSessionDescriptionInit.html) and [RTCIceCandidate](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate) objects
 
 ## Emission Events
 
@@ -39,6 +57,18 @@ Events that clients can emit.
 If the room owner leaves, the entire room will be closed, disconnecting all other clients
 :::
 
+### signal-send(room: string, targetId: string, data: [RTCDataContainer](#rtc-data-container)) <!-- signalling-send -->
+* **Description:** send a signal to a target client. Used for RTC connection setup
+* **Parameters:**
+    * `room`: the name of the room to send the signal in
+    * `targetId`: the id of the target client to send the signal to
+    * `data`: the signal data
+* **Response events:**
+    * [not-in-room](#not-in-room): client was not in `room`
+    * [target-not-fond](#target-not-found): emitted if `targetId` is not found in the current room
+* **Target Events**
+    * [signal-receive](#signal-receive): the event targetId receives
+
 
 
 ## Self Listener Events
@@ -65,10 +95,11 @@ Events sent back in response to events emitted by clients.
 * **Parameters:**
     * `room`: the room that was created
 
-### room-joined(room: string) <!-- room-joined -->
+### room-joined(room: string, clients: string[]) <!-- room-joined -->
 * **Description:** emitted when a room is successfully joined.
 * **Parameters:**
     * `room`: the room that was joined
+    * `clients`: the already connected clients (does not include self)
 
 ### room-left(room: string, kicked: boolean) <!-- room-left -->
 * **Description:** emitted when a room is successfully left.
@@ -76,12 +107,30 @@ Events sent back in response to events emitted by clients.
     * `room`: the room that was left
     * `kicked`: indicates if the client was kicked from the room or not
 
+### target-not-found(room: string, targetId: string) <!-- target-not-found -->
+* **Description:** emitted when a target client for a message not found in the given room
+* **Parameters:**
+    * `room`: the room that the event occurred in
+    * `targetId`: the client id of the attempted target
+
 ### error(message: any) <!-- error -->
 * **Description:** emitted when an unexpected socket error occurs on the server
 * **Parameters:**
     * `message`: the error message
+* **Parameters:**
+    * `room`: the room that the event occurred in
+    * `senderId`: the client id of the sender
 
+## Targeted Listener Events
 
+Events for client-specific target messages
+
+### signal-receive(room: string, senderId: string, data: [RTCDataContainer](#rtc-data-container)) <!-- signal-receive -->
+* **Description:** emitted when the client receives a connection signal from another client. Used for RTC connection setup.
+* **Parameters:**
+    * `room`: the room that the event occurred in
+    * `senderId`: the client id of the sender
+    * `data`: the signal data
 
 
 ## Room Listener Events
