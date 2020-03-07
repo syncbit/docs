@@ -95,10 +95,11 @@ Events sent back in response to events emitted by clients.
 * **Parameters:**
     * `room`: the room that was created
 
-### room-joined(room: string, clients: string[]) <!-- room-joined -->
+### room-joined(room: string, ownerId: string, clients: string[]) <!-- room-joined -->
 * **Description:** emitted when a room is successfully joined.
 * **Parameters:**
     * `room`: the room that was joined
+    * `ownerId`: the client id of the room owner
     * `clients`: the already connected clients (does not include self)
 
 ### room-left(room: string, kicked: boolean) <!-- room-left -->
