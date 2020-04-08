@@ -19,6 +19,7 @@
     },
     "homepage": "https://github.com/syncbit/docs#readme",
     "dependencies": {
-        "markdown-it-custom-header-link": "^1.0.4"
+        "markdown-it-custom-header-link": "^1.0.4",
+        "vuepress": "^1.4.0"
     }
 }
