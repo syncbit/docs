@@ -5,7 +5,8 @@ module.exports = {
         [ 'link', { rel: 'icon', sizes: "16x16", href: '/favicon-16x16.ico' } ],
         [ 'link', { rel: 'icon', sizes: "32x32", href: '/favicon-32x32.ico' } ],
         [ 'link', { rel: 'icon', sizes: "64x64", href: '/favicon-64x64.ico' } ],
-        [ 'link', { rel: 'icon', sizes: "128x128", href: '/favicon-128x128.ico' } ]
+        [ 'link', { rel: 'icon', sizes: "128x128", href: '/favicon-128x128.ico' } ],
+        [ 'meta', { name: 'theme-color', content: '#CF97F5'} ]
     ],
     themeConfig: {
         nav: [
