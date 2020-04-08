@@ -6,4 +6,4 @@ Synctune is a web application that uses WebRTC to allow for music synchronizatio
 
 ## Application Structure
 
-![Overview image](~/assets/SyncTune-structure.png)
+![Overview image](./assets/SyncTune-structure.png)
