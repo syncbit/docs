@@ -1,2 +1,2 @@
-# docs
-The syncbit documentation site
+# SyncTune DOcs
+The SyncTune documentation site

@@ -1,14 +1,20 @@
 module.exports = {
-    title: 'Syncbit Docs',
+    title: 'Synctune Docs',
     description: '',
+    head: [
+        [ 'link', { rel: 'icon', sizes: "16x16", href: '/favicon-16x16.ico' } ],
+        [ 'link', { rel: 'icon', sizes: "32x32", href: '/favicon-32x32.ico' } ],
+        [ 'link', { rel: 'icon', sizes: "64x64", href: '/favicon-64x64.ico' } ],
+        [ 'link', { rel: 'icon', sizes: "128x128", href: '/favicon-128x128.ico' } ]
+    ],
     themeConfig: {
         nav: [
             { text: "Home", link: "/" },
-            { text: "Signalling Server", link: "/signalling-server/" }
+            { text: "Room Server", link: "/room-server/" }
         ],
         // Enable sidebar on specific pages
         sidebar: [
-            '/signalling-server/'
+            '/room-server/'
         ]
     },
     markdown: {
