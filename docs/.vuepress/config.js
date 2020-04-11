@@ -11,11 +11,8 @@ module.exports = {
     themeConfig: {
         nav: [
             { text: "Home", link: "/" },
-            { text: "Room Server", link: "/room-server/" }
-        ],
-        // Enable sidebar on specific pages
-        sidebar: [
-            '/room-server/'
+            { text: "Room Server", link: "/room-server/" },
+            { text: "Credits", link: "/credits/" }
         ]
     },
     markdown: {

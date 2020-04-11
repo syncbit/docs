@@ -1,3 +1,7 @@
+---
+sidebar: false
+---
+
 # SyncTune Documentation 
 
 Welcome to the SyncTune documentation site!
