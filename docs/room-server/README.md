@@ -13,7 +13,7 @@ Rooms left open for more than a day will be closed automatically.
 ## API
 
 ### Create Room
-* description: creates a room
+* description: creates a room, gives back a secret cookie key used to close the room.
 * permissions: `none`
 * request: `POST /rooms/create`
     * content-type: `application/json`
@@ -27,6 +27,13 @@ Rooms left open for more than a day will be closed automatically.
 * response: `500`
     * body: Error with redis
 
+```
+$ curl -X POST \
+       -H "Content-Type: application/json" \
+       -d '{ "roomName": "myRoom" }' \
+       http://localhost:8080/rooms/create
+```
+
 ### Get Owner ID
 * description: gets the peer id of the owner of a room
 * permissions: `none`
@@ -38,6 +45,10 @@ Rooms left open for more than a day will be closed automatically.
     * body: No room with name `roomName`
 * response: `500`
     * body: Error with redis
+
+```
+$ curl -X GET http://localhost:8080/rooms/myRoom
+```
 
 ### Close Room
 * description: close a room
@@ -51,3 +62,9 @@ Rooms left open for more than a day will be closed automatically.
     * body: No room with name `roomName`
 * response: `500`
     * body: Error with redis
+
+```
+$ curl -X DELETE \
+       -cookie "secret=mySecret"
+       http://localhost:8080/rooms/myRoom
+```
