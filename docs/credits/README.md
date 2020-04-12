@@ -32,3 +32,8 @@ Below are a list of credits for the resources used when developing this project.
 * Reference code for the debounce function: [https://davidwalsh.name/javascript-debounce-function](https://davidwalsh.name/javascript-debounce-function)
 * Reference code for the remToPixel function: [https://stackoverflow.com/questions/36532307/rem-px-in-javascript](https://stackoverflow.com/questions/36532307/rem-px-in-javascript)
 * Reference code for the displaySecondsString: [https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript](https://stackoverflow.com/questions/1322732/convert-seconds-to-hh-mm-ss-with-javascript)
+
+
+## images (client)
+* home page background image: [https://img.clipartlook.com/image-search-festival-clip-art-festival-clip-art-3850_3153.jpg](https://img.clipartlook.com/image-search-festival-clip-art-festival-clip-art-3850_3153.jpg)
+* music note clipart: [https://www.stickpng.com/assets/images/5a02cac918e87004f1ca43db.png](https://www.stickpng.com/assets/images/5a02cac918e87004f1ca43db.png)
