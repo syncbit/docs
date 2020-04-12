@@ -23,6 +23,8 @@ Rooms left open for more than a day will be closed automatically.
         * selfId: string
 * response: `200`
     * body: OK
+* response: `400`
+    * body: Malformed roomName | Malformed selfId
 * response: `409`
     * body: Room `roomName` already exists 
 * response: `500`
@@ -42,6 +44,8 @@ $ curl -X POST \
 * response: `200`
     * body: object
         * ownerId: string
+* response: `400`
+    * body: Malformed roomName
 * response: `404`
     * body: No room with name `roomName`
 * response: `500`
@@ -57,6 +61,8 @@ $ curl -X GET http://localhost:8080/rooms/myRoom
 * request: `DELETE /rooms/:roomName`
 * response: `200`
     * body: OK
+* response: `400`
+    * body: Malformed roomName
 * response: `401`
     * body: You can't delete this room since you don't own it
 * response: `404`
